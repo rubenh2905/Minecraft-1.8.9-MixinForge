@@ -22,17 +22,17 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'java'
 
 version = "1.0"
-group= "GROUP_NAME" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "BASE_NAME"
+group= "me.rootsky" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "TestMod"
 
 sourceCompatibility = targetCompatibility = 1.8
 compileJava.options.encoding = 'UTF-8'
 
 minecraft {
     version = "1.8.9"
-    tweakClass = "GROUP_NAME.PROJECT_NAME.mixins.PROJECT_NAME+Tweaker"
+    tweakClass = "me.rootsky.TestMod.mixins.TestModTweaker"
     runDir = "run"
-    mappings = "stable_20"
+    mappings = "stable_22"
     makeObfSourceJar = false
 }
 
@@ -63,8 +63,9 @@ dependencies {
 }
 
 mixin {
-    defaultObfuscationEnv notch
-    add sourceSets.main, "mixins.PROJECT_NAME.refmap.json"
+    // defaultObfuscationEnv notch
+    defaultObfuscationEnv searge
+    add sourceSets.main, "mixins.TestMod.refmap.json"
 }
 
 processResources {
@@ -88,8 +89,8 @@ jar {
 
 jar {
     manifest.attributes(
-            "MixinConfigs": 'mixins.PROJECT_NAME.json',
-            "TweakClass": "GROUP_NAME.PROJECT_NAME.mixins.PROJECT_NAME+Tweaker",
+            "MixinConfigs": 'mixins.TestMod.json',
+            "TweakClass": "me.rootsky.TestMod.mixins.TestModTweaker",
             "TweakOrder": 0,
             "Manifest-Version": 1.0
     )
